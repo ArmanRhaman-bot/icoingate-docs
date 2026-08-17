@@ -6,33 +6,34 @@
 
   <title>iCoinGate API Documentation</title>
 
-  <meta
-    name="description"
-    content="iCoinGate Developer API Documentation"
-  >
-
+  <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-
-  <header class="topbar">
+  <!-- Header -->
+  <header class="header">
 
     <div class="brand">
-      <div class="brand-logo">iC</div>
 
-      <div>
-        <div class="brand-name">iCoinGate</div>
-        <div class="brand-sub">Developer API</div>
+      <img
+        src="logo.png"
+        alt="iCoinGate"
+        class="brand-logo"
+      >
+
+      <div class="brand-text">
+        <strong>iCoinGate</strong>
+        <span>Developer API</span>
       </div>
+
     </div>
 
     <button
       class="menu-btn"
       id="menuBtn"
-      aria-label="Open menu"
+      aria-label="Menu"
     >
       ☰
     </button>
@@ -40,259 +41,201 @@
   </header>
 
 
-  <!-- ================= LAYOUT ================= -->
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobileMenu">
 
-  <div class="layout">
+    <a href="#authentication">Authentication</a>
+    <a href="#withdraw">Withdrawal</a>
+    <a href="#example">Example</a>
+    <a href="#response">Response</a>
+
+  </nav>
 
 
-    <!-- ================= SIDEBAR ================= -->
+  <!-- Main -->
+  <main class="container">
 
-    <aside class="sidebar" id="sidebar">
+    <!-- Hero -->
+    <section class="hero">
 
-      <div class="side-title">
-        Documentation
+      <div class="eyebrow">
+        DEVELOPER API
       </div>
 
-      <nav>
+      <h1>iCoinGate API</h1>
 
-        <a href="#overview" class="nav-link active">
-          Overview
-        </a>
+      <p>
+        Integrate iCoinGate wallet transfers into
+        your Telegram bot or application.
+      </p>
 
-        <a href="#authentication" class="nav-link">
-          Authentication
-        </a>
-
-        <a href="#withdrawal" class="nav-link">
-          Withdrawal
-        </a>
-
-        <a href="#request" class="nav-link">
-          Request
-        </a>
-
-        <a href="#parameters" class="nav-link">
-          Parameters
-        </a>
-
-        <a href="#response" class="nav-link">
-          Response
-        </a>
-
-        <a href="#errors" class="nav-link">
-          Errors
-        </a>
-
-        <a href="#developer-example" class="nav-link">
-          Developer Example
-        </a>
-
-        <a href="#security" class="nav-link">
-          Security
-        </a>
-
-      </nav>
-
-
-      <div class="sidebar-bottom">
+      <div class="hero-buttons">
 
         <a
           href="http://t.me/mrXwalletbot"
           target="_blank"
-          class="side-btn"
+          class="btn primary"
         >
-          Wallet Bot
+          Open Wallet
         </a>
 
         <a
           href="http://t.me/icoingatesup"
           target="_blank"
-          class="side-btn secondary"
+          class="btn secondary"
         >
-          Support
+          Contact Support
         </a>
 
       </div>
 
-    </aside>
+    </section>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- Authentication -->
+    <section
+      class="docs-section"
+      id="authentication"
+    >
 
-    <main class="content">
+      <div class="eyebrow">
+        AUTHENTICATION
+      </div>
 
+      <h2>API Credentials</h2>
 
-      <!-- ================= HERO ================= -->
+      <p>
+        Every request must include your
+        iCoinGate API Key and API Secret.
+      </p>
 
-      <section id="overview" class="hero">
+      <div class="info-card">
 
-        <div class="eyebrow">
-          DEVELOPER API
+        <div class="info-row">
+          <span>API Key</span>
+          <code>YOUR_API_KEY</code>
         </div>
 
-        <h1>
-          iCoinGate API
-        </h1>
+        <div class="info-row">
+          <span>API Secret</span>
+          <code>YOUR_API_SECRET</code>
+        </div>
 
+      </div>
+
+      <div class="warning">
+        <strong>Security</strong>
         <p>
-          Integrate iCoinGate wallet transfers into your
-          Telegram bot or application.
+          Never share your API Secret publicly.
+          Store your credentials securely.
         </p>
+      </div>
 
-        <div class="hero-actions">
+    </section>
 
-          <a
-            href="http://t.me/mrXwalletbot"
-            target="_blank"
-            class="primary-btn"
+
+    <!-- Withdrawal -->
+    <section
+      class="docs-section"
+      id="withdraw"
+    >
+
+      <div class="eyebrow">
+        TRANSFERS
+      </div>
+
+      <h2>Developer Withdrawal</h2>
+
+      <p>
+        Transfer cryptocurrency from the
+        developer's iCoinGate wallet to another
+        Telegram user.
+      </p>
+
+      <div class="endpoint">
+
+        <span class="method">POST</span>
+
+        <code>/api_withdraw</code>
+
+      </div>
+
+      <h3>Parameters</h3>
+
+      <div class="table">
+
+        <div class="table-head">
+          <span>Parameter</span>
+          <span>Type</span>
+          <span>Required</span>
+        </div>
+
+        <div class="table-row">
+          <code>api_key</code>
+          <span>String</span>
+          <span>Yes</span>
+        </div>
+
+        <div class="table-row">
+          <code>api_secret</code>
+          <span>String</span>
+          <span>Yes</span>
+        </div>
+
+        <div class="table-row">
+          <code>coin</code>
+          <span>String</span>
+          <span>Yes</span>
+        </div>
+
+        <div class="table-row">
+          <code>amount</code>
+          <span>Number</span>
+          <span>Yes</span>
+        </div>
+
+        <div class="table-row">
+          <code>to_user_id</code>
+          <span>Telegram ID</span>
+          <span>Yes</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Example -->
+    <section
+      class="docs-section"
+      id="example"
+    >
+
+      <div class="eyebrow">
+        REQUEST
+      </div>
+
+      <h2>Example Request</h2>
+
+      <p>
+        A simple example of an iCoinGate
+        withdrawal request.
+      </p>
+
+      <div class="code-box">
+
+        <div class="code-header">
+          <span>JSON</span>
+
+          <button
+            class="copy-btn"
+            data-copy="requestCode"
           >
-            Open Wallet
-          </a>
-
-          <a
-            href="http://t.me/icoingatesup"
-            target="_blank"
-            class="secondary-btn"
-          >
-            Contact Support
-          </a>
-
+            Copy
+          </button>
         </div>
 
-      </section>
-
-
-      <!-- ================= AUTH ================= -->
-
-      <section id="authentication" class="doc-section">
-
-        <div class="section-label">
-          AUTHENTICATION
-        </div>
-
-        <h2>
-          API Credentials
-        </h2>
-
-        <p>
-          Every request must include your iCoinGate
-          API Key and API Secret.
-        </p>
-
-
-        <div class="info-grid">
-
-          <div class="info-card">
-
-            <span class="field-name">
-              api_key
-            </span>
-
-            <p>
-              Your unique developer API Key.
-            </p>
-
-          </div>
-
-
-          <div class="info-card">
-
-            <span class="field-name">
-              api_secret
-            </span>
-
-            <p>
-              Your private API Secret used to authenticate
-              requests.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="notice warning">
-          <strong>Keep your credentials private.</strong>
-          Never publish your API Secret in public repositories
-          or client-side applications.
-        </div>
-
-      </section>
-
-
-      <!-- ================= WITHDRAWAL ================= -->
-
-      <section id="withdrawal" class="doc-section">
-
-        <div class="section-label">
-          WITHDRAWAL
-        </div>
-
-        <h2>
-          Withdrawal API
-        </h2>
-
-        <p>
-          Transfer supported cryptocurrency from your
-          iCoinGate developer balance to another iCoinGate user.
-        </p>
-
-
-        <div class="endpoint">
-
-          <span class="method">
-            POST
-          </span>
-
-          <code>
-            YOUR_WEBHOOK_URL
-          </code>
-
-        </div>
-
-        <p class="muted">
-          Your personal Webhook URL is generated automatically
-          when you create your API.
-        </p>
-
-      </section>
-
-
-      <!-- ================= REQUEST ================= -->
-
-      <section id="request" class="doc-section">
-
-        <div class="section-label">
-          REQUEST
-        </div>
-
-        <h2>
-          Request Body
-        </h2>
-
-        <p>
-          Send the following JSON body to your generated
-          iCoinGate Webhook URL.
-        </p>
-
-
-        <div class="code-box">
-
-          <div class="code-header">
-
-            <span>
-              JSON
-            </span>
-
-            <button
-              class="copy-btn"
-              data-copy-target="requestCode"
-            >
-              Copy
-            </button>
-
-          </div>
-
-          <pre id="requestCode"><code>{
+        <pre id="requestCode"><code>{
   "api_key": "YOUR_API_KEY",
   "api_secret": "YOUR_API_SECRET",
   "coin": "USDT",
@@ -300,115 +243,42 @@
   "to_user_id": "6284575410"
 }</code></pre>
 
+      </div>
+
+    </section>
+
+
+    <!-- Response -->
+    <section
+      class="docs-section"
+      id="response"
+    >
+
+      <div class="eyebrow">
+        RESPONSE
+      </div>
+
+      <h2>Successful Response</h2>
+
+      <p>
+        When the transfer is completed successfully,
+        the API returns the transfer details.
+      </p>
+
+      <div class="code-box">
+
+        <div class="code-header">
+          <span>JSON</span>
+
+          <button
+            class="copy-btn"
+            data-copy="responseCode"
+          >
+            Copy
+          </button>
         </div>
 
-      </section>
-
-
-      <!-- ================= PARAMETERS ================= -->
-
-      <section id="parameters" class="doc-section">
-
-        <div class="section-label">
-          PARAMETERS
-        </div>
-
-        <h2>
-          Request Parameters
-        </h2>
-
-
-        <div class="table-wrap">
-
-          <table>
-
-            <thead>
-
-              <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td><code>api_key</code></td>
-                <td>String</td>
-                <td>Your developer API Key.</td>
-              </tr>
-
-              <tr>
-                <td><code>api_secret</code></td>
-                <td>String</td>
-                <td>Your private API Secret.</td>
-              </tr>
-
-              <tr>
-                <td><code>coin</code></td>
-                <td>String</td>
-                <td>Cryptocurrency symbol, e.g. USDT.</td>
-              </tr>
-
-              <tr>
-                <td><code>amount</code></td>
-                <td>Number</td>
-                <td>Amount of cryptocurrency to transfer.</td>
-              </tr>
-
-              <tr>
-                <td><code>to_user_id</code></td>
-                <td>String</td>
-                <td>Telegram ID of the recipient.</td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= RESPONSE ================= -->
-
-      <section id="response" class="doc-section">
-
-        <div class="section-label">
-          RESPONSE
-        </div>
-
-        <h2>
-          Successful Response
-        </h2>
-
-        <p>
-          A successful request returns transfer information
-          including the remaining developer balance.
-        </p>
-
-
-        <div class="code-box">
-
-          <div class="code-header">
-
-            <span>
-              JSON
-            </span>
-
-            <button
-              class="copy-btn"
-              data-copy-target="responseCode"
-            >
-              Copy
-            </button>
-
-          </div>
-
-          <pre id="responseCode"><code>{
+        <pre id="responseCode"><code>{
   "status": "success",
   "message": "Withdrawal completed successfully",
   "app_name": "Your App",
@@ -416,239 +286,121 @@
   "amount": 0.1,
   "to_user_id": "6284575410",
   "remaining_balance": 99.9,
-  "transfer_id": "XXXXXXXXXXXX"
+  "transfer_id": "ABC123XYZ",
+  "timestamp": "2026-08-17T12:00:00Z"
 }</code></pre>
 
+      </div>
+
+    </section>
+
+
+    <!-- User Notification -->
+    <section class="docs-section">
+
+      <div class="eyebrow">
+        USER NOTIFICATION
+      </div>
+
+      <h2>Transfer Notification</h2>
+
+      <p>
+        The receiving user automatically receives
+        a wallet notification after a successful
+        transfer.
+      </p>
+
+      <div class="notification">
+
+        <div class="notification-title">
+          💰 You received transfer
         </div>
 
-      </section>
-
-
-      <!-- ================= ERRORS ================= -->
-
-      <section id="errors" class="doc-section">
-
-        <div class="section-label">
-          ERRORS
+        <div class="notification-text">
+          0.085 USDT
+          <span>($0.09)</span>
+          from iCoinGate
         </div>
 
-        <h2>
-          Error Responses
-        </h2>
+        <a
+          href="http://t.me/mrXwalletbot"
+          target="_blank"
+          class="wallet-btn"
+        >
+          💼 Wallet
+        </a>
 
+      </div>
 
-        <div class="error-list">
+    </section>
 
-          <div class="error-item">
 
-            <code>Invalid API Key</code>
+    <!-- Supported Coins -->
+    <section class="docs-section">
 
-            <span>
-              The provided API Key is invalid.
-            </span>
+      <div class="eyebrow">
+        ASSETS
+      </div>
 
-          </div>
+      <h2>Supported Coins</h2>
 
+      <div class="coins">
 
-          <div class="error-item">
+        <span>USDT</span>
+        <span>USDC</span>
+        <span>TON</span>
+        <span>TRX</span>
+        <span>ETH</span>
+        <span>BNB</span>
+        <span>BTC</span>
+        <span>SOL</span>
+        <span>HMSTR</span>
+        <span>MAJOR</span>
+        <span>DOGS</span>
+        <span>CATI</span>
+        <span>NOT</span>
 
-            <code>Invalid API Secret</code>
+      </div>
 
-            <span>
-              The provided API Secret is invalid.
-            </span>
+    </section>
 
-          </div>
 
+    <!-- Support -->
+    <section class="support">
 
-          <div class="error-item">
+      <h2>Need Help?</h2>
 
-            <code>Insufficient balance</code>
+      <p>
+        If you have any problem integrating
+        iCoinGate API, contact our support team.
+      </p>
 
-            <span>
-              The developer does not have enough
-              balance for the requested transfer.
-            </span>
+      <a
+        href="http://t.me/icoingatesup"
+        target="_blank"
+        class="btn primary"
+      >
+        Contact Support
+      </a>
 
-          </div>
+    </section>
 
+  </main>
 
-          <div class="error-item">
 
-            <code>Invalid amount</code>
+  <!-- Footer -->
+  <footer>
 
-            <span>
-              Amount must be greater than zero.
-            </span>
+    <img
+      src="logo.png"
+      alt="iCoinGate"
+    >
 
-          </div>
+    <span>
+      © 2026 iCoinGate
+    </span>
 
-
-          <div class="error-item">
-
-            <code>Unsupported coin</code>
-
-            <span>
-              The requested cryptocurrency is not supported.
-            </span>
-
-          </div>
-
-
-          <div class="error-item">
-
-            <code>Missing receiver user ID</code>
-
-            <span>
-              A recipient Telegram ID is required.
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= DEVELOPER EXAMPLE ================= -->
-
-      <section id="developer-example" class="doc-section">
-
-        <div class="section-label">
-          INTEGRATION
-        </div>
-
-        <h2>
-          Developer Example
-        </h2>
-
-        <p>
-          Example of sending a withdrawal request from
-          a Bots.Business bot.
-        </p>
-
-
-        <details class="example-box">
-
-          <summary>
-            View Bots.Business example
-          </summary>
-
-
-          <div class="code-box">
-
-            <div class="code-header">
-
-              <span>
-                BJS
-              </span>
-
-              <button
-                class="copy-btn"
-                data-copy-target="developerCode"
-              >
-                Copy
-              </button>
-
-            </div>
-
-
-            <pre id="developerCode"><code>const API_KEY =
-  "YOUR_API_KEY";
-
-const API_SECRET =
-  "YOUR_API_SECRET";
-
-const API_URL =
-  "YOUR_WEBHOOK_URL";
-
-HTTP.post({
-  url: API_URL,
-
-  body: JSON.stringify({
-    api_key: API_KEY,
-    api_secret: API_SECRET,
-    coin: "USDT",
-    amount: 0.1,
-    to_user_id: "6284575410"
-  }),
-
-  headers: {
-    "Content-Type": "application/json"
-  }
-});</code></pre>
-
-          </div>
-
-        </details>
-
-      </section>
-
-
-      <!-- ================= SECURITY ================= -->
-
-      <section id="security" class="doc-section">
-
-        <div class="section-label">
-          SECURITY
-        </div>
-
-        <h2>
-          Security
-        </h2>
-
-        <div class="notice">
-
-          Keep your API Key, API Secret and Webhook URL
-          private.
-
-          <br><br>
-
-          Never store credentials inside public GitHub
-          repositories or client-side applications.
-
-          <br><br>
-
-          If your credentials are compromised,
-          regenerate your API credentials immediately.
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= FOOTER ================= -->
-
-      <footer>
-
-        <div>
-          © 2026 iCoinGate
-        </div>
-
-        <div class="footer-links">
-
-          <a
-            href="http://t.me/mrXwalletbot"
-            target="_blank"
-          >
-            Wallet
-          </a>
-
-          <a
-            href="http://t.me/icoingatesup"
-            target="_blank"
-          >
-            Support
-          </a>
-
-        </div>
-
-      </footer>
-
-
-    </main>
-
-  </div>
+  </footer>
 
 
   <script src="script.js"></script>
