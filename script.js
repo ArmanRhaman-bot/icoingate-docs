@@ -1,166 +1,124 @@
-// ===============================
-// MOBILE SIDEBAR
-// ===============================
+// ==========================================
+// MOBILE MENU
+// ==========================================
 
 const menuBtn =
   document.getElementById("menuBtn");
 
-const sidebar =
-  document.getElementById("sidebar");
+const mobileMenu =
+  document.getElementById("mobileMenu");
 
 
-menuBtn.addEventListener(
-  "click",
-  () => {
+menuBtn.addEventListener("click", () => {
 
-    sidebar.classList.toggle("open");
+  mobileMenu.classList.toggle("active");
 
-  }
-);
+});
 
 
-// ===============================
-// CLOSE SIDEBAR AFTER NAVIGATION
-// ===============================
+// Close menu after clicking a link
 
 document
-  .querySelectorAll(".nav-link")
+  .querySelectorAll(".mobile-menu a")
   .forEach(link => {
 
-    link.addEventListener(
-      "click",
-      () => {
+    link.addEventListener("click", () => {
 
-        sidebar.classList.remove("open");
+      mobileMenu.classList.remove("active");
 
-      }
-    );
+    });
 
   });
 
 
-// ===============================
-// COPY BUTTON
-// ===============================
+// ==========================================
+// COPY CODE
+// ==========================================
 
 document
   .querySelectorAll(".copy-btn")
   .forEach(button => {
 
-    button.addEventListener(
-      "click",
-      async () => {
+    button.addEventListener("click", async () => {
 
-        const targetId =
-          button.dataset.copyTarget;
+      const targetId =
+        button.getAttribute("data-copy");
 
-        const target =
-          document.getElementById(targetId);
+      const target =
+        document.getElementById(targetId);
 
-        if (!target) return;
+      if(!target){
+        return;
+      }
 
-        const text =
-          target.innerText;
+      const text =
+        target.innerText;
 
-        try {
+      try {
 
-          await navigator.clipboard.writeText(
-            text
-          );
+        await navigator.clipboard.writeText(text);
 
-          const original =
-            button.textContent;
+        const oldText =
+          button.innerText;
 
-          button.textContent =
-            "Copied";
+        button.innerText =
+          "Copied!";
 
-          setTimeout(() => {
+        setTimeout(() => {
 
-            button.textContent =
-              original;
+          button.innerText =
+            oldText;
 
-          }, 1400);
+        }, 1500);
 
-        } catch (error) {
+      } catch(error) {
 
-          button.textContent =
-            "Failed";
+        button.innerText =
+          "Failed";
 
-          setTimeout(() => {
+        setTimeout(() => {
 
-            button.textContent =
-              "Copy";
+          button.innerText =
+            "Copy";
 
-          }, 1400);
-
-        }
+        }, 1500);
 
       }
-    );
+
+    });
 
   });
 
 
-// ===============================
-// ACTIVE NAVIGATION
-// ===============================
+// ==========================================
+// CURRENT YEAR
+// ==========================================
 
-const sections =
-  document.querySelectorAll(
-    ".doc-section, .hero"
-  );
+const year =
+  new Date().getFullYear();
 
-const navLinks =
-  document.querySelectorAll(
-    ".nav-link"
-  );
+const footer =
+  document.querySelector("footer span");
 
+if(footer){
 
-const observer =
-  new IntersectionObserver(
+  footer.innerText =
+    `© ${year} iCoinGate`;
 
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (!entry.isIntersecting)
-          return;
-
-        navLinks.forEach(link => {
-
-          link.classList.remove(
-            "active"
-          );
-
-        });
-
-        const active =
-          document.querySelector(
-            `.nav-link[href="#${entry.target.id}"]`
-          );
-
-        if (active) {
-
-          active.classList.add(
-            "active"
-          );
-
-        }
-
-      });
-
-    },
-
-    {
-      rootMargin:
-        "-20% 0px -70% 0px"
-    }
-
-  );
+}
 
 
-sections.forEach(section => {
+// ==========================================
+// EXTERNAL LINKS
+// ==========================================
 
-  observer.observe(section);
+document
+  .querySelectorAll('a[target="_blank"]')
+  .forEach(link => {
 
-});
+    link.setAttribute(
+      "rel",
+      "noopener noreferrer"
+    );
+
+  });
