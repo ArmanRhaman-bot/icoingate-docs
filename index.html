@@ -12,6 +12,16 @@
 
 <body>
 
+  <!-- Animated background -->
+  <div class="bg-glow" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
   <!-- Header -->
   <header class="header">
 
@@ -21,6 +31,7 @@
         src="logo.png"
         alt="iCoinGate"
         class="brand-logo"
+        onerror="this.onerror=null;this.classList.add('logo-fallback');this.removeAttribute('src');"
       >
 
       <div class="brand-text">
@@ -29,6 +40,14 @@
       </div>
 
     </div>
+
+    <nav class="desktop-nav" id="desktopNav">
+      <a href="#features" data-nav>Features</a>
+      <a href="#authentication" data-nav>Authentication</a>
+      <a href="#withdraw" data-nav>Withdrawal</a>
+      <a href="#bot-example" data-nav>Bot Example</a>
+      <a href="#response" data-nav>Response</a>
+    </nav>
 
     <button
       class="menu-btn"
@@ -44,9 +63,11 @@
   <!-- Mobile Menu -->
   <nav class="mobile-menu" id="mobileMenu">
 
+    <a href="#features">Features</a>
     <a href="#authentication">Authentication</a>
     <a href="#withdraw">Withdrawal</a>
     <a href="#example">Example</a>
+    <a href="#bot-example">Bot Example</a>
     <a href="#response">Response</a>
 
   </nav>
@@ -58,18 +79,19 @@
     <!-- Hero -->
     <section class="hero">
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
+        <span class="pulse-dot"></span>
         DEVELOPER API
       </div>
 
-      <h1>iCoinGate API</h1>
+      <h1 class="reveal" style="transition-delay:.05s">iCoinGate API</h1>
 
-      <p>
+      <p class="reveal" style="transition-delay:.1s">
         Integrate iCoinGate wallet transfers into
         your Telegram bot or application.
       </p>
 
-      <div class="hero-buttons">
+      <div class="hero-buttons reveal" style="transition-delay:.15s">
 
         <a
           href="http://t.me/mrXwalletbot"
@@ -89,6 +111,93 @@
 
       </div>
 
+      <div class="hero-stats reveal" style="transition-delay:.2s">
+        <div class="stat">
+          <strong data-count="13">0</strong>
+          <span>Coins Supported</span>
+        </div>
+        <div class="stat">
+          <strong data-count="100" data-suffix="%">0</strong>
+          <span>Uptime</span>
+        </div>
+        <div class="stat">
+          <strong data-count="24" data-suffix="/7">0</strong>
+          <span>Support</span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section
+      class="docs-section"
+      id="features"
+    >
+
+      <div class="eyebrow reveal">
+        WHY iCoinGate
+      </div>
+
+      <h2 class="reveal">Built for Bot Developers</h2>
+
+      <p class="reveal">
+        Everything you need to move crypto between
+        Telegram users, straight from your own bot.
+      </p>
+
+      <div class="features-grid">
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Instant Transfers</h3>
+          <p>Withdrawals settle in real time, straight to any Telegram user's wallet.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 9 4.6-.3 8-4 8-9V5l-8-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Secure by Design</h3>
+          <p>Requests are authenticated with a private API key and secret pair.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Multi-Chain Support</h3>
+          <p>13 coins including USDT, TON, BTC, ETH, SOL and more.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 19v-8a8 8 0 0 1 16 0v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 19h4v3H2zM18 19h4v3h-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Auto Notifications</h3>
+          <p>Recipients get an instant wallet notification the moment funds arrive.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 5l-2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Simple REST API</h3>
+          <p>One JSON POST request — no SDK required, works from any language.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>24/7 Support</h3>
+          <p>Our team is on standby around the clock for integration help.</p>
+        </div>
+
+      </div>
+
     </section>
 
 
@@ -98,18 +207,18 @@
       id="authentication"
     >
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         AUTHENTICATION
       </div>
 
-      <h2>API Credentials</h2>
+      <h2 class="reveal">API Credentials</h2>
 
-      <p>
+      <p class="reveal">
         Every request must include your
         iCoinGate API Key and API Secret.
       </p>
 
-      <div class="info-card">
+      <div class="info-card reveal">
 
         <div class="info-row">
           <span>API Key</span>
@@ -123,8 +232,8 @@
 
       </div>
 
-      <div class="warning">
-        <strong>Security</strong>
+      <div class="warning reveal">
+        <strong>⚠ Security</strong>
         <p>
           Never share your API Secret publicly.
           Store your credentials securely.
@@ -140,19 +249,19 @@
       id="withdraw"
     >
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         TRANSFERS
       </div>
 
-      <h2>Developer Withdrawal</h2>
+      <h2 class="reveal">Developer Withdrawal</h2>
 
-      <p>
+      <p class="reveal">
         Transfer cryptocurrency from the
         developer's iCoinGate wallet to another
         Telegram user.
       </p>
 
-      <div class="endpoint">
+      <div class="endpoint reveal">
 
         <span class="method">POST</span>
 
@@ -160,9 +269,9 @@
 
       </div>
 
-      <h3>Parameters</h3>
+      <h3 class="reveal">Parameters</h3>
 
-      <div class="table">
+      <div class="table reveal">
 
         <div class="table-head">
           <span>Parameter</span>
@@ -211,18 +320,18 @@
       id="example"
     >
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         REQUEST
       </div>
 
-      <h2>Example Request</h2>
+      <h2 class="reveal">Example Request</h2>
 
-      <p>
+      <p class="reveal">
         A simple example of an iCoinGate
         withdrawal request.
       </p>
 
-      <div class="code-box">
+      <div class="code-box reveal">
 
         <div class="code-header">
           <span>JSON</span>
@@ -248,24 +357,154 @@
     </section>
 
 
+    <!-- Bot Integration Example -->
+    <section
+      class="docs-section"
+      id="bot-example"
+    >
+
+      <div class="eyebrow reveal">
+        BOT INTEGRATION
+      </div>
+
+      <h2 class="reveal">/withdraw Command Example</h2>
+
+      <p class="reveal">
+        A ready-to-use example showing how to wire up a
+        <code>/withdraw</code> command in your Telegram bot.
+        It parses the amount and recipient from the message,
+        checks your balance, then calls the iCoinGate withdrawal
+        endpoint.
+      </p>
+
+      <div class="steps reveal">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h4>Parse the command</h4>
+            <p>Reads the amount and Telegram ID from <code>/withdraw 8994226373 30</code>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h4>Validate</h4>
+            <p>Checks the format, your balance, and blocks self-transfers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h4>Call the API</h4>
+            <p>Sends the withdrawal to iCoinGate with your API key & secret.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h4>Handle the result</h4>
+            <p>Routes to a success or error command based on the response.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-box reveal">
+
+        <div class="code-header">
+          <span>JavaScript</span>
+
+          <button
+            class="copy-btn"
+            data-copy="botCode"
+          >
+            Copy
+          </button>
+        </div>
+
+        <pre id="botCode" class="language-js"><code>let args = (String(message || "").trim()).split(/\s+/);
+
+if (args.length &lt; 3) {
+  return Api.sendMessage({
+    chat_id: chat.chatid,
+    text: "❌ &lt;b&gt;Usage:&lt;/b&gt;\n&lt;code&gt;/withdraw 8994226373 30&lt;/code&gt;\n(Any order works)",
+    parse_mode: "HTML"
+  });
+}
+
+let amount = parseFloat(args.find(a =&gt; /^\d+(\.\d+)?$/.test(a) &amp;&amp; parseFloat(a) &gt; 0));
+let toUserId = args.find(a =&gt; /^\d{5,15}$/.test(a));
+
+if (!amount || !toUserId) {
+  return Api.sendMessage({
+    chat_id: chat.chatid,
+    text: "❌ &lt;b&gt;Invalid format&lt;/b&gt;\nDetect failed. Use: /withdraw 8994226373 30",
+    parse_mode: "HTML"
+  });
+}
+
+const API_KEY = "API_KEY";
+const API_SECRET = "SECRET_KEY";
+const API_URL = "WEBHOOK_URL";
+
+const coin = "USDT";
+let developerBalance = parseFloat(Libs.ResourcesLib.userRes(coin).value()) || 0;
+
+if (amount &gt; developerBalance) {
+  return Api.sendMessage({
+    chat_id: chat.chatid,
+    text: `❌ &lt;b&gt;Insufficient ${coin} balance&lt;/b&gt;\nAvailable: &lt;code&gt;${developerBalance} ${coin}&lt;/code&gt;`,
+    parse_mode: "HTML"
+  });
+}
+
+if (String(user.telegramid) === String(toUserId)) {
+  return Api.sendMessage({
+    chat_id: chat.chatid,
+    text: "❌ You cannot withdraw to your own account.",
+    parse_mode: "HTML"
+  });
+}
+
+HTTP.post({
+  url: API_URL,
+  body: JSON.stringify({ api_key: API_KEY, api_secret: API_SECRET, coin, amount, to_user_id: toUserId }),
+  headers: { "Content-Type": "application/json" },
+  success: `/withdraw_success ${amount} ${coin} ${toUserId}`,
+  error: `/withdraw_error ${amount} ${coin} ${toUserId}`
+});</code></pre>
+
+      </div>
+
+      <div class="warning reveal">
+        <strong>⚠ Before you deploy</strong>
+        <p>
+          Replace <code>API_KEY</code>, <code>SECRET_KEY</code> and
+          <code>WEBHOOK_URL</code> with your real iCoinGate credentials
+          and endpoint. Keep them out of public repositories or client-side code.
+        </p>
+      </div>
+
+    </section>
+
+
     <!-- Response -->
     <section
       class="docs-section"
       id="response"
     >
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         RESPONSE
       </div>
 
-      <h2>Successful Response</h2>
+      <h2 class="reveal">Successful Response</h2>
 
-      <p>
+      <p class="reveal">
         When the transfer is completed successfully,
         the API returns the transfer details.
       </p>
 
-      <div class="code-box">
+      <div class="code-box reveal">
 
         <div class="code-header">
           <span>JSON</span>
@@ -298,19 +537,19 @@
     <!-- User Notification -->
     <section class="docs-section">
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         USER NOTIFICATION
       </div>
 
-      <h2>Transfer Notification</h2>
+      <h2 class="reveal">Transfer Notification</h2>
 
-      <p>
+      <p class="reveal">
         The receiving user automatically receives
         a wallet notification after a successful
         transfer.
       </p>
 
-      <div class="notification">
+      <div class="notification reveal">
 
         <div class="notification-title">
           💰 You received transfer
@@ -338,13 +577,13 @@
     <!-- Supported Coins -->
     <section class="docs-section">
 
-      <div class="eyebrow">
+      <div class="eyebrow reveal">
         ASSETS
       </div>
 
-      <h2>Supported Coins</h2>
+      <h2 class="reveal">Supported Coins</h2>
 
-      <div class="coins">
+      <div class="coins reveal">
 
         <span>USDT</span>
         <span>USDC</span>
@@ -368,9 +607,9 @@
     <!-- Support -->
     <section class="support">
 
-      <h2>Need Help?</h2>
+      <h2 class="reveal">Need Help?</h2>
 
-      <p>
+      <p class="reveal">
         If you have any problem integrating
         iCoinGate API, contact our support team.
       </p>
@@ -378,7 +617,7 @@
       <a
         href="http://t.me/icoingatesup"
         target="_blank"
-        class="btn primary"
+        class="btn primary reveal"
       >
         Contact Support
       </a>
@@ -394,6 +633,7 @@
     <img
       src="logo.png"
       alt="iCoinGate"
+      onerror="this.onerror=null;this.classList.add('logo-fallback');this.removeAttribute('src');"
     >
 
     <span>
@@ -402,6 +642,9 @@
 
   </footer>
 
+
+  <!-- Back to top -->
+  <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
 
